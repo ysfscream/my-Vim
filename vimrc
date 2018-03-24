@@ -1,4 +1,3 @@
-
 call plug#begin('~/.vim/plugged')
 
 """ vim状态栏
@@ -41,14 +40,26 @@ Plug 'cakebaker/scss-syntax.vim'
 "sass显示colors
 Plug 'gorodinskiy/vim-coloresque'
 "html 标签匹配高亮
-"Plug 'Valloric/MatchTagAlways'
+Plug 'Valloric/MatchTagAlways'
+" 提高HTML和CSS的工作流
+Plug 'mattn/emmet-vim'
+" 提供快速编写xml/html的能力，如标签自动闭合等
+Plug 'othree/xml.vim'
+" 多光标编辑功能
+Plug 'terryma/vim-multiple-cursors'
+" 快速开关注释
+Plug 'scrooloose/nerdcommenter'
+" 显示git diff 和 stages/undoes 片段
+Plug 'airblade/vim-gitgutter'
+" 解决中文输入法下面无法使用命令
+Plug 'ybian/smartim'
 
 call plug#end()
-
 
 """ vim 全局设置
 syntax on                                  " 开启语法高亮
 """ colorscheme Tomorrow-Night                 " 主题设置
+colorscheme space-vim-dark
 set confirm                                " 退出未保存文件的时候提示
 set backspace=indent,eol,start             " 解决delete键无作用
 set t_Co=256                               " 支持256色
@@ -112,12 +123,17 @@ autocmd BufReadPost *
 
 
 """ 左侧菜单nerdtree与顶部标签页
+" 显示隐藏文件
+let NERDTreeShowHidden=1
+" NERDTree 子窗口中不显示冗余帮助信息
+let NERDTreeMinimalUI=1
+" 删除文件时自动删除文件对应 buffer
+let NERDTreeAutoDeleteBuffer=1
 let g:nerdtree_tabs_open_on_console_startup=1                        " 默认打开tree
 let g:NERDTreeWinSize = 25                                           " 菜单栏宽度
 nmap <F12> :NERDTreeToggle<cr>                                       " F12 切换显示或不显示
 " 某些文件不显示在tree里
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$', 'node_modules', 'dist']
-
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$', 'node_modules', 'dist', '.DS_Store']
 nnoremap <C-l> gt                                                    " ctr + l 向左切换标签页面
 nnoremap <C-h> gT                                                    " ctr + h 向右切换标签页面
 
@@ -234,3 +250,18 @@ nnoremap <C-f> :Ag<CR>
 " 光标行列高亮
 set cursorcolumn
 set cursorline
+
+" 在注释符默认添加空格
+let g:NERDSpaceDelims = 1
+" 使用紧凑语法美化多行注释
+let g:NERDCompactSexyComs = 1
+" 将行注释符左对齐而不是下面的代码缩进
+let g:NERDDefaultAlign = 'left'
+" 设置语言默认使用备用定界符
+let g:NERDAltDelims_java = 1
+" 添加自定义格式或覆盖默认值。
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" 允许注释和转换空行（注释区域时有用）
+let g:NERDCommentEmptyLines = 1
+" 启用时修整尾随空格注释
+let g:NERDTrimTrailingWhitespace = 1
