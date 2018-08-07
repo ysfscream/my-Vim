@@ -59,7 +59,9 @@ call plug#end()
 """ vim 全局设置
 syntax on                                  " 开启语法高亮
 """ colorscheme Tomorrow-Night                 " 主题设置
-colorscheme space-vim-dark
+" colorscheme space-vim-dark
+colorschem panda
+" colorschem vwilight
 set confirm                                " 退出未保存文件的时候提示
 set backspace=indent,eol,start             " 解决delete键无作用
 set t_Co=256                               " 支持256色
@@ -130,7 +132,7 @@ let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
 let g:nerdtree_tabs_open_on_console_startup=1                        " 默认打开tree
-let g:NERDTreeWinSize = 25                                           " 菜单栏宽度
+let g:NERDTreeWinSize = 30                                           " 菜单栏宽度
 nmap <F12> :NERDTreeToggle<cr>                                       " F12 切换显示或不显示
 " 某些文件不显示在tree里
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$', 'node_modules', 'dist', '.DS_Store']
